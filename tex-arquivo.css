@@ -1,0 +1,185 @@
+*{
+    margin:0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --text-color: white;
+    --bg-url: url(./assets/bg-mobile.jpg) no-repeat center center / cover ;
+    background-position: 200%;
+    --stroke-color:  rgba(255, 255, 255, 0.5);
+    --surface-color:  rgba(255, 255, 255, 0.05);
+    --surfac-color-hover: rgba(0,0,0,0.02);
+    --highlight-color: rgba(255,255,255,0.2);
+    --switch-bg-url: url(./assets/moon-stars.svg);
+    
+}
+.light{
+    --text-color: black; 
+    --bg-url: url(./assets/bg-mobile-light.jpg) no-repeat center center / cover;
+    background-position:(200%);
+    --stroke-color: rgba(0,0,0,0.5);
+    --surface-color: rgba(0,0,0,0.05);  
+    --surfac-color-hover: rgba(0,0,0,0.02);
+    --highlight-color: rgba(0,0,0,0.1);
+    --switch-bg-url: url(./assets/sun.svg);
+}
+body { 
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    background: var(--bg-url);
+    height: 100vh;
+}
+body * {
+ font-family: 'Inter' sans-serif;
+ color: var(--text-color);
+}
+#container {
+   /* border: 1px solid brown; /* a caixa completa por fora */
+    width: 100%; /*largura*/
+    max-width: 588px; /*largura maxima*/
+   /* height: 712px; */
+    margin: 56px auto 0px;
+    padding: 0 24px;
+    border-radius: 50%;
+}
+#profile{
+    text-align: center;
+    padding: 24px;
+}
+#profile img{
+    width: 112px;
+    margin: auto;
+}
+#profile{
+    text-align: center;
+}
+#profile img { /*essa parte é a largura e altura da foto capa e o formato redondo*/
+ width: 150px;
+ height: 150px;   
+ border-radius: 9999px; 
+}
+#profile p {
+    font-weight: 500;
+    line-height: 24px ;
+    margin-top: 8px;
+}
+#switch{
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
+#switch button{ /*configurações do botão*/
+    width: 32px; /*largura*/
+    height: 32px;  /*altura*/
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+   
+    position: absolute;
+    top:50%;
+    right:0%;
+    z-index: 1;
+    transform: translateY(-50%);
+
+    animation: slide-back  0.4s forwards;/*tempo do  botão voltar*/
+}
+.light #switch button{
+    animation: slide-in 0.4s forwards;/*tempo do botão ir*/
+}
+#switch button:hover{
+outline: 8px solid var(--highlight-color);
+}
+#switch span{
+    display: block;
+    width: 64px; 
+    height: 24px; 
+    background: var(--surface-color);
+    border:1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    --webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px; 
+}
+/*links-lista*/
+ul{
+    list-style: none;
+    display: flex; /*display flexivel*/
+    flex-direction:column;
+    gap: 16px;
+
+    padding: 24px 0;
+}
+ul li a {
+   /* border:1px solid blue; /* cria a caixa e mostra visualmente*/
+    display: flex; /* cria uma linha imaginaria na minha lista*/  /*display flexivel*/
+    align-items: center;
+    justify-content: center; /* esse camarada alinhou a lista*/
+
+    padding: 16px 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color); /*rgba quatro cores : vermelho,verde,azul,alpha*/
+    border-radius: 8px ; /*aredondamento de borda*/
+
+    backdrop-filter: blur(4px) ;
+  -webkit-backdrop-filter: blur(4px) ;
+   text-decoration: none; /*tira a linha que estava a baixo do nome*/
+
+   transition: background 0.2s;
+}
+ul li a:hover {
+    background: var(--surfac-color-hover);
+    border: 1.5px solid var(--text-color);
+}
+#social-links{
+ display: flex;
+ justify-content: center; /*alinha os icones ao centro*/
+ gap: 16px;
+ padding: 24px 0;
+
+ font-size: 24px;
+}
+#social-links a {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 16px;
+   transition: background 0.2s;
+   border-radius: 50%;
+}
+#social-links a:hover{
+    background: var(--highlight-color);
+   
+}
+footer  {
+    text-align: center;
+    padding: 24px 0;
+    font-size: 14px;
+}
+
+@media(min-width:700px) {
+    :root{
+        --bg-url: url(./assets/bg-desktop.jpg);
+    }
+    .light{
+        --bg-url: url(./assets/bg-desktop-light.jpg);
+
+    }
+}
+@keyframes slide-in{
+    from{/*começo*/
+        left: 0;
+    }
+    to{/*fim*/
+        left: 50% ;
+    }
+}
+@keyframes slide-back {
+    from{
+        left: 50% ;
+    }
+    to{
+        left: 0 ;
+    }    
+}
